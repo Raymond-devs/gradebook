@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Gradebook</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>📘 Student Gradebook</h1>
+
+    <!-- Form to add students -->
+    <div class="form-container">
+        <input type="text" id="studentName" placeholder="Enter student name">
+        <input type="number" id="studentScore" placeholder="Enter student score">
+        <button id="addBtn">Add Student</button>
+    </div>
+
+    <!-- Table to display students -->
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody id="studentList"></tbody>
+    </table>
+
+    <!-- Average score -->
+    <p id="averageScore">Average Score: 0</p>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
