@@ -57,13 +57,12 @@ function displayStudents() {
     studentList.appendChild(row);
   });
 }
-
 function calculateAverage() {
   let sum = 0;
 
-  for (let i = 0; i < students.length; i++) {
-    sum += students[i].score;
-  }
+  students.forEach((student) => {
+    sum += student.score;
+  });
 
   let avg = 0;
   if (students.length > 0) {
