@@ -1,14 +1,11 @@
-// Array to hold students
 let students = [];
 
-// Get elements from HTML
-const nameInput = document.getElementById("studentName");
-const scoreInput = document.getElementById("studentScore");
-const addBtn = document.getElementById("addBtn");
-const studentList = document.getElementById("studentList");
-const averageScore = document.getElementById("averageScore");
+let nameInput = document.getElementById("studentName");
+let scoreInput = document.getElementById("studentScore");
+let addBtn = document.getElementById("addBtn");
+let studentList = document.getElementById("studentList");
+let averageScore = document.getElementById("averageScore");
 
-// Add student when button is clicked
 addBtn.addEventListener("click", function () {
   const name = nameInput.value.trim();
   const score = Number(scoreInput.value);
@@ -18,58 +15,49 @@ addBtn.addEventListener("click", function () {
     return;
   }
 
-  // Create student object
-  const student = {
+  let student = {
     name: name,
     score: score,
   };
 
-  // Add to array
   students.push(student);
 
-  // Clear inputs
   nameInput.value = "";
   scoreInput.value = "";
 
-  // Update display
   displayStudents();
   calculateAverage();
 });
 
-// Function to display all students
 function displayStudents() {
   studentList.innerHTML = "";
 
-  // Find top score first
   let topScore = 0;
-  for (let i = 0; i < students.length; i++) {
-    if (students[i].score > topScore) {
-      topScore = students[i].score;
+  students.forEach((student) => {
+    if (student.score > topScore) {
+      topScore = student.score;
     }
-  }
+  });
 
-  // Display each student
-  for (let i = 0; i < students.length; i++) {
+  students.forEach((student) => {
     const row = document.createElement("tr");
 
     const nameCell = document.createElement("td");
-    nameCell.textContent = students[i].name;
+    nameCell.textContent = student.name;
 
     const scoreCell = document.createElement("td");
-    scoreCell.textContent = students[i].score;
+    scoreCell.textContent = student.score;
 
-    // Highlight if top performer
-    if (students[i].score === topScore) {
+    if (student.score === topScore) {
       row.classList.add("top-student");
     }
 
     row.appendChild(nameCell);
     row.appendChild(scoreCell);
     studentList.appendChild(row);
-  }
+  });
 }
 
-// Function to calculate and show average score
 function calculateAverage() {
   let sum = 0;
 
